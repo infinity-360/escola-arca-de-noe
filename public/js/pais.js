@@ -67,7 +67,7 @@ $('#forgotForm').addEventListener('submit', (e) => {
 
 $('#logoutBtn').addEventListener('click', async () => {
   await api('/api/auth/logout', { method: 'POST' }).catch(() => {});
-  location.href = '/pais.html';
+  location.href = 'pais.html';
 });
 
 // =============== PAINEL ===============
@@ -185,7 +185,7 @@ async function loadDocs() {
         </div>
         <span class="status st-${x.status}">${ST_LABEL[x.status]}</span>
         <div class="row-actions">
-          <a class="btn btn-ghost btn-sm" href="/api/documents/${x.id}/file" target="_blank" rel="noopener">Ver</a>
+          <a class="btn btn-ghost btn-sm" href="api/documents/${x.id}/file" target="_blank" rel="noopener">Ver</a>
           ${x.status !== 'aprovado' ? `<button class="btn btn-ghost btn-sm" data-deldoc="${x.id}" aria-label="Excluir">🗑️</button>` : ''}
         </div>
       </div>`).join('') : '<div class="empty">Nenhum documento enviado ainda.</div>';

@@ -37,7 +37,7 @@ $('#setupForm').addEventListener('submit', (e) => {
 });
 $('#logoutBtn').addEventListener('click', async () => {
   await api('/api/auth/logout', { method: 'POST' }).catch(() => {});
-  location.href = '/equipe.html';
+  location.href = 'equipe.html';
 });
 
 // =============== NAVEGAÇÃO ===============
@@ -80,6 +80,12 @@ const roleLabel = (r) => (r === 'diretor' ? 'Diretor(a)' : 'Professor(a)');
 
 // =============== INÍCIO ===============
 function channelsHtml(ch) {
+  if (ch.demo) {
+    return `<div class="list">
+      <div class="list-item"><span class="ic">✉️</span><div class="grow"><b>E-mail</b><small>Demonstração: envios simulados. Na versão final, usa o e-mail da escola.</small></div><span class="status st-enviado">Simulado</span></div>
+      <div class="list-item"><span class="ic">💬</span><div class="grow"><b>WhatsApp</b><small>Demonstração: envios simulados. Na versão final, envio automático pelo WhatsApp da escola.</small></div><span class="status st-enviado">Simulado</span></div>
+    </div>`;
+  }
   const wa = ch.whatsapp ? { zapi: 'Z-API', evolution: 'Evolution API', meta: 'WhatsApp Cloud API (Meta)', webhook: 'Webhook' }[ch.whatsapp] : null;
   return `<div class="list">
     <div class="list-item"><span class="ic">✉️</span><div class="grow"><b>E-mail</b><small>${ch.email ? 'Configurado (SMTP)' : 'Não configurado: defina SMTP_* no arquivo .env'}</small></div><span class="status ${ch.email ? 'st-aprovado' : 'st-enviado'}">${ch.email ? 'Ativo' : 'Pendente'}</span></div>
@@ -214,7 +220,7 @@ async function loadDocs() {
         <td><small>${fmtDateTime(x.created_at)}</small></td>
         <td><span class="status st-${x.status}">${ST[x.status]}</span>${x.feedback ? `<br><small class="muted">${esc(x.feedback)}</small>` : ''}</td>
         <td><div class="row-actions">
-          <a class="btn btn-ghost btn-sm" href="/api/documents/${x.id}/file" target="_blank" rel="noopener">Abrir</a>
+          <a class="btn btn-ghost btn-sm" href="api/documents/${x.id}/file" target="_blank" rel="noopener">Abrir</a>
           <button class="btn btn-sm btn-green" data-review="${x.id}">Conferir</button>
         </div></td>
       </tr>`).join('') : '<tr><td colspan="5"><div class="empty">Nenhum documento aqui.</div></td></tr>';
@@ -233,7 +239,7 @@ $('#docRows').addEventListener('click', (e) => {
   f.reset(); f.querySelector('.form-alert').className = 'form-alert hidden';
   f.id.value = x.id; f.feedback.value = x.feedback || '';
   $('#docInfo').innerHTML = `<b>${esc(x.title)}</b><br>${esc(x.category)} · ${esc(x.parent_name)}${x.child_name ? ` · ${esc(x.child_name)}` : ''}`;
-  $('#docOpen').href = `/api/documents/${x.id}/file`;
+  $('#docOpen').href = `api/documents/${x.id}/file`;
   openModal('docModal');
 });
 $('#docForm').addEventListener('submit', (e) => {
@@ -419,7 +425,7 @@ staffForm.addEventListener('submit', (e) => {
 });
 
 // =============== NOTIFICAÇÕES ===============
-const STN = { enviado: '✅ Enviado', erro: '❌ Erro', nao_configurado: '⚙️ Canal não configurado' };
+const STN = { enviado: '✅ Enviado', erro: '❌ Erro', nao_configurado: '⚙️ Canal não configurado', simulado: '🧪 Simulado (demo)' };
 async function loadNotifs() {
   try {
     const d = await api('/api/admin/notifications');

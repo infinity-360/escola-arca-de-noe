@@ -176,11 +176,11 @@ if (!q.get('SELECT COUNT(*) AS n FROM segments').n) {
 
 if (!q.get('SELECT COUNT(*) AS n FROM gallery').n) {
   const g = db.prepare('INSERT INTO gallery (src, caption, sort) VALUES (?,?,?)');
-  g.run('/img/fachada.jpg', 'Nossa escola', 1);
-  g.run('/img/galeria/foto1.jpg', 'Carinho em cada passo', 2);
-  g.run('/img/galeria/foto4.jpg', 'Colônia de férias', 3);
-  g.run('/img/galeria/foto8.jpg', 'Parquinho', 4);
-  g.run('/img/galeria/foto3.jpg', 'Descobertas todos os dias', 5);
+  g.run('img/fachada.jpg', 'Nossa escola', 1);
+  g.run('img/galeria/foto1.jpg', 'Carinho em cada passo', 2);
+  g.run('img/galeria/foto4.jpg', 'Colônia de férias', 3);
+  g.run('img/galeria/foto8.jpg', 'Parquinho', 4);
+  g.run('img/galeria/foto3.jpg', 'Descobertas todos os dias', 5);
 }
 
 if (!q.get('SELECT COUNT(*) AS n FROM posts').n) {

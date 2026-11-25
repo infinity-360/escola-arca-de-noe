@@ -1,4 +1,6 @@
 // Utilitários compartilhados entre as páginas
+import { IS_DEMO, demoApi } from './demo.js';
+export { IS_DEMO };
 export const $ = (s, el = document) => el.querySelector(s);
 export const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 
@@ -10,6 +12,8 @@ export function linkify(text) {
 }
 
 export async function api(url, { method = 'GET', body, form } = {}) {
+  url = url.replace(/^\//, ''); // caminho relativo: funciona na raiz ou em subpasta
+  if (IS_DEMO) return demoApi(url, { method, body, form });
   const opts = { method, headers: { 'X-Requested-With': 'fetch' }, credentials: 'same-origin' };
   if (form) opts.body = form;
   else if (body !== undefined) { opts.body = JSON.stringify(body); opts.headers['Content-Type'] = 'application/json'; }

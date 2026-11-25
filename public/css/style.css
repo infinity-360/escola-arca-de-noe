@@ -449,6 +449,7 @@ table.table { width: 100%; border-collapse: collapse; font-size: .94rem; min-wid
 .st-aprovado { background: var(--green-soft); color: #2D6B12; }
 .st-recusado { background: var(--red-soft); color: #A3222D; }
 .st-erro { background: var(--red-soft); color: #A3222D; }
+.st-simulado { background: var(--blue-soft); color: #0E5F86; }
 .st-nao_configurado { background: var(--bg); color: var(--muted); }
 
 .list { display: grid; gap: 12px; }

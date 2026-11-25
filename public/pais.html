@@ -6,11 +6,11 @@
   <title>Área dos Pais · Escola Arca de Noé</title>
   <meta name="robots" content="noindex">
   <meta name="theme-color" content="#6DB33F">
-  <link rel="icon" href="/img/logo.jpg">
+  <link rel="icon" href="img/logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body class="portal-body">
 
@@ -19,7 +19,7 @@
 <!-- ================= LOGIN / CADASTRO ================= -->
 <div class="auth-wrap hidden" id="authView">
   <aside class="auth-side pais">
-    <a class="brand" href="/"><img src="/img/logo.jpg" alt="" width="58" height="58"><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Portal da Família</span></span></a>
+    <a class="brand" href="./"><img src="img/logo.jpg" alt="" width="58" height="58"><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Portal da Família</span></span></a>
     <div>
       <h1>Bem-vindo(a) à Área dos Pais 💚</h1>
       <p>Acompanhe a vida escolar do seu filho, envie documentos com segurança e receba todos os avisos da escola no seu e-mail e WhatsApp.</p>
@@ -36,7 +36,7 @@
 
   <section class="auth-main">
     <div class="auth-card">
-      <a class="back-home" href="/">← Voltar ao site</a>
+      <a class="back-home" href="./">← Voltar ao site</a>
 
       <!-- Login -->
       <div id="loginBox">
@@ -80,7 +80,7 @@
             <div id="kids" class="list" style="margin-top:8px"></div>
             <button class="btn btn-ghost btn-sm mt" type="button" id="addKid" style="margin-top:10px">＋ Adicionar criança</button>
           </div>
-          <label class="check"><input type="checkbox" name="consent" required> <span>Li e aceito a <a href="/privacidade.html" target="_blank">política de privacidade</a> e autorizo a escola a me enviar avisos por e-mail e WhatsApp.</span></label>
+          <label class="check"><input type="checkbox" name="consent" required> <span>Li e aceito a <a href="privacidade.html" target="_blank">política de privacidade</a> e autorizo a escola a me enviar avisos por e-mail e WhatsApp.</span></label>
           <button class="btn btn-green" type="submit">Concluir cadastro</button>
           <p class="divider">Já tem cadastro? <button class="btn-link" type="button" data-go="login">Entrar</button></p>
         </form>
@@ -104,12 +104,12 @@
 <!-- ================= PAINEL ================= -->
 <div class="app hidden" id="appView">
   <div class="mobile-bar">
-    <a class="brand" href="/"><img src="/img/logo.jpg" alt=""><span class="brand-name">Arca de Noé</span></a>
+    <a class="brand" href="./"><img src="img/logo.jpg" alt=""><span class="brand-name">Arca de Noé</span></a>
     <button class="menu-toggle" style="display:grid" id="menuBtn" aria-label="Abrir menu">☰</button>
   </div>
   <div class="scrim" id="scrim"></div>
   <aside class="sidebar">
-    <a class="brand" href="/"><img src="/img/logo.jpg" alt=""><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Área dos Pais</span></span></a>
+    <a class="brand" href="./"><img src="img/logo.jpg" alt=""><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Área dos Pais</span></span></a>
     <nav class="side-nav" id="sideNav">
       <button data-tab="mural"><span class="ic">📌</span>Mural</button>
       <button data-tab="filhos"><span class="ic">🧒</span>Meus filhos</button>
@@ -126,7 +126,7 @@
     <!-- Mural -->
     <section data-panel="mural">
       <div class="main-head"><div><h1>Olá, <span class="first-name"></span>! 👋</h1><p>Confira os avisos, feriados, reuniões e eventos da escola.</p></div>
-        <a class="btn btn-ghost btn-sm" href="/#tour">🔄 Tour 360°</a></div>
+        <a class="btn btn-ghost btn-sm" href="#tour">🔄 Tour 360°</a></div>
       <div class="tabs" id="muralFilter">
         <button class="active" data-f="todos">Todos</button>
         <button data-f="proximos">Próximos</button>
@@ -218,6 +218,6 @@
   </div>
 </div>
 
-<script type="module" src="/js/pais.js"></script>
+<script type="module" src="js/pais.js"></script>
 </body>
 </html>

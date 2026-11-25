@@ -10,6 +10,20 @@ Site institucional e portal da escola, com:
 - **Recuperação de senha** por link enviado por e-mail e WhatsApp (válido por 1 hora).
 - **Notificações automáticas** por **e-mail e WhatsApp** a todas as famílias quando um aviso é publicado ou o site é atualizado, com histórico de envios.
 
+## 🧪 Demonstração online
+
+**https://infinity-360.github.io/escola-arca-de-noe/**
+
+A versão no GitHub Pages roda **sem servidor**: login, cadastro, mural, documentos e painel da equipe funcionam em modo simulado, com os dados guardados só no navegador de quem está testando. Nenhum e-mail ou WhatsApp é enviado de verdade.
+
+| Área | E-mail | Senha |
+|---|---|---|
+| Equipe (diretora) | `diretora@demo.com` | `demo1234` |
+| Equipe (professora) | `professora@demo.com` | `demo1234` |
+| Pais | `familia@demo.com` | `demo1234` |
+
+O botão **Restaurar**, no canto da tela, volta a demonstração ao estado original. Para ver a demo em outro endereço, acrescente `?demo` na URL.
+
 ## Perfis de acesso
 
 | Perfil | Pode |

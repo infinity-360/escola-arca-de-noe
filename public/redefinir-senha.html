@@ -6,16 +6,16 @@
   <title>Nova senha · Escola Arca de Noé</title>
   <meta name="robots" content="noindex">
   <meta name="referrer" content="no-referrer">
-  <link rel="icon" href="/img/logo.jpg">
+  <link rel="icon" href="img/logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <div class="center-page">
     <div class="card" style="width:min(460px,100%);text-align:left;padding:32px">
-      <a class="brand" href="/" style="margin-bottom:22px"><img src="/img/logo.jpg" alt="" width="58" height="58"><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Redefinir senha</span></span></a>
+      <a class="brand" href="./" style="margin-bottom:22px"><img src="img/logo.jpg" alt="" width="58" height="58"><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Redefinir senha</span></span></a>
       <h2 style="font-size:1.8rem">Criar nova senha 🔐</h2>
       <p class="muted">Escolha uma senha com pelo menos 8 caracteres, contendo letras e números.</p>
       <form class="form" id="resetForm" novalidate>
@@ -26,12 +26,12 @@
       </form>
       <div id="done" class="hidden">
         <div class="alert alert-ok">Senha alterada com sucesso! ✅</div>
-        <a class="btn mt" id="goLogin" href="/pais.html">Ir para o login</a>
+        <a class="btn mt" id="goLogin" href="pais.html">Ir para o login</a>
       </div>
     </div>
   </div>
 <script type="module">
-  import { $, api, formData, submitting, setupPasswordToggles } from '/js/common.js';
+  import { $, api, formData, submitting, setupPasswordToggles } from './js/common.js';
   setupPasswordToggles();
   const params = new URLSearchParams(location.search);
   const token = params.get('token') || '';
@@ -47,7 +47,7 @@
       const r = await api('/api/auth/reset', { method: 'POST', body: { token, password: d.password } });
       form.classList.add('hidden');
       $('#done').classList.remove('hidden');
-      $('#goLogin').href = r.area === 'equipe' ? '/equipe.html' : '/pais.html';
+      $('#goLogin').href = r.area === 'equipe' ? 'equipe.html' : 'pais.html';
     });
   });
 </script>
