@@ -1,0 +1,22 @@
+{
+  "name": "escola-arca-de-noe-sarandi",
+  "version": "1.0.0",
+  "description": "Site e portal da Escola Arca de Noé (Sarandi-PR): página pública, tour 360°, mural, Área dos Pais e Área da Equipe com notificações por e-mail e WhatsApp.",
+  "type": "module",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "express": "^5.3.0",
+    "multer": "^2.5.0",
+    "nodemailer": "^10.6.1"
+  }
+}

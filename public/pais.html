@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área dos Pais · Escola Arca de Noé</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#6DB33F">
+  <link rel="icon" href="/img/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="portal-body">
+
+<div class="center-page" id="boot"><div><div class="loader dark"></div><b>Carregando…</b></div></div>
+
+<!-- ================= LOGIN / CADASTRO ================= -->
+<div class="auth-wrap hidden" id="authView">
+  <aside class="auth-side pais">
+    <a class="brand" href="/"><img src="/img/logo.jpg" alt="" width="58" height="58"><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Portal da Família</span></span></a>
+    <div>
+      <h1>Bem-vindo(a) à Área dos Pais 💚</h1>
+      <p>Acompanhe a vida escolar do seu filho, envie documentos com segurança e receba todos os avisos da escola no seu e-mail e WhatsApp.</p>
+      <ul>
+        <li><span>📢</span>Avisos de feriados, reuniões e eventos</li>
+        <li><span>📄</span>Envio e acompanhamento de documentos</li>
+        <li><span>📲</span>Notificações por e-mail e WhatsApp</li>
+        <li><span>🔒</span>Seus dados protegidos com senha</li>
+      </ul>
+    </div>
+    <small style="opacity:.8">© Escola Arca de Noé · Sarandi-PR</small>
+    <span class="deco-big">🌈</span>
+  </aside>
+
+  <section class="auth-main">
+    <div class="auth-card">
+      <a class="back-home" href="/">← Voltar ao site</a>
+
+      <!-- Login -->
+      <div id="loginBox">
+        <h2>Entrar</h2>
+        <p class="sub">Use o e-mail e a senha cadastrados.</p>
+        <form class="form" id="loginForm" novalidate>
+          <div class="form-alert hidden" role="alert"></div>
+          <div class="field"><label for="lEmail">E-mail</label><input class="input" id="lEmail" name="email" type="email" autocomplete="email" required></div>
+          <div class="field"><label for="lPass">Senha</label>
+            <div class="pw-wrap"><input class="input" id="lPass" name="password" type="password" autocomplete="current-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div>
+          </div>
+          <div class="form-foot"><button class="btn-link" type="button" data-go="forgot">Esqueci minha senha</button></div>
+          <button class="btn btn-green" type="submit">Entrar na Área dos Pais</button>
+          <p class="divider">Ainda não tem cadastro?</p>
+          <button class="btn btn-ghost" type="button" data-go="register">📝 Criar meu cadastro</button>
+        </form>
+      </div>
+
+      <!-- Cadastro -->
+      <div id="registerBox" class="hidden">
+        <h2>Cadastro da família</h2>
+        <p class="sub">E-mail e WhatsApp são obrigatórios: é por eles que você receberá os avisos da escola.</p>
+        <form class="form" id="registerForm" novalidate>
+          <div class="form-alert hidden" role="alert"></div>
+          <div class="field"><label for="rName">Nome completo do responsável</label><input class="input" id="rName" name="name" autocomplete="name" required></div>
+          <div class="form-row">
+            <div class="field"><label for="rEmail">E-mail</label><input class="input" id="rEmail" name="email" type="email" autocomplete="email" required></div>
+            <div class="field"><label for="rWa">WhatsApp</label><input class="input" id="rWa" name="whatsapp" inputmode="tel" autocomplete="tel" placeholder="(44) 99999-9999" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="rPass">Senha</label>
+              <div class="pw-wrap"><input class="input" id="rPass" name="password" type="password" autocomplete="new-password" minlength="8" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div>
+              <span class="hint">Mínimo 8 caracteres, com letras e números.</span>
+            </div>
+            <div class="field"><label for="rPass2">Confirmar senha</label>
+              <div class="pw-wrap"><input class="input" id="rPass2" name="password2" type="password" autocomplete="new-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div>
+            </div>
+          </div>
+          <div>
+            <span class="label">Criança(s)</span>
+            <div id="kids" class="list" style="margin-top:8px"></div>
+            <button class="btn btn-ghost btn-sm mt" type="button" id="addKid" style="margin-top:10px">＋ Adicionar criança</button>
+          </div>
+          <label class="check"><input type="checkbox" name="consent" required> <span>Li e aceito a <a href="/privacidade.html" target="_blank">política de privacidade</a> e autorizo a escola a me enviar avisos por e-mail e WhatsApp.</span></label>
+          <button class="btn btn-green" type="submit">Concluir cadastro</button>
+          <p class="divider">Já tem cadastro? <button class="btn-link" type="button" data-go="login">Entrar</button></p>
+        </form>
+      </div>
+
+      <!-- Esqueci a senha -->
+      <div id="forgotBox" class="hidden">
+        <h2>Recuperar senha</h2>
+        <p class="sub">Informe o e-mail do cadastro. Enviaremos um link para criar uma nova senha por e-mail e WhatsApp.</p>
+        <form class="form" id="forgotForm" novalidate>
+          <div class="form-alert hidden" role="alert"></div>
+          <div class="field"><label for="fEmail">E-mail</label><input class="input" id="fEmail" name="email" type="email" autocomplete="email" required></div>
+          <button class="btn btn-green" type="submit">Enviar link de recuperação</button>
+          <button class="btn-link" type="button" data-go="login">← Voltar para o login</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PAINEL ================= -->
+<div class="app hidden" id="appView">
+  <div class="mobile-bar">
+    <a class="brand" href="/"><img src="/img/logo.jpg" alt=""><span class="brand-name">Arca de Noé</span></a>
+    <button class="menu-toggle" style="display:grid" id="menuBtn" aria-label="Abrir menu">☰</button>
+  </div>
+  <div class="scrim" id="scrim"></div>
+  <aside class="sidebar">
+    <a class="brand" href="/"><img src="/img/logo.jpg" alt=""><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Área dos Pais</span></span></a>
+    <nav class="side-nav" id="sideNav">
+      <button data-tab="mural"><span class="ic">📌</span>Mural</button>
+      <button data-tab="filhos"><span class="ic">🧒</span>Meus filhos</button>
+      <button data-tab="documentos"><span class="ic">📄</span>Documentos <span class="count hidden" id="docCount"></span></button>
+      <button data-tab="dados"><span class="ic">⚙️</span>Meus dados</button>
+    </nav>
+    <div class="side-user">
+      <b id="uName"></b><small id="uEmail"></small>
+      <button class="btn btn-ghost btn-sm" style="margin-top:10px;width:100%" id="logoutBtn">Sair</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- Mural -->
+    <section data-panel="mural">
+      <div class="main-head"><div><h1>Olá, <span class="first-name"></span>! 👋</h1><p>Confira os avisos, feriados, reuniões e eventos da escola.</p></div>
+        <a class="btn btn-ghost btn-sm" href="/#tour">🔄 Tour 360°</a></div>
+      <div class="tabs" id="muralFilter">
+        <button class="active" data-f="todos">Todos</button>
+        <button data-f="proximos">Próximos</button>
+        <button data-f="pais">Só para pais</button>
+      </div>
+      <div class="mural" id="muralList"></div>
+    </section>
+
+    <!-- Filhos -->
+    <section data-panel="filhos" class="hidden">
+      <div class="main-head"><div><h1>Meus filhos</h1><p>Mantenha os dados das crianças sempre atualizados.</p></div>
+        <button class="btn btn-green btn-sm" id="newChild">＋ Adicionar criança</button></div>
+      <div class="list" id="childList"></div>
+    </section>
+
+    <!-- Documentos -->
+    <section data-panel="documentos" class="hidden">
+      <div class="main-head"><div><h1>Documentos</h1><p>Envie os documentos solicitados pela escola. Você será avisado quando forem conferidos.</p></div></div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>📤 Enviar documento</h3>
+          <form class="form" id="docForm" novalidate>
+            <div class="form-alert hidden" role="alert"></div>
+            <div class="field"><label for="dCat">Tipo de documento</label><select class="input" id="dCat" name="category" required></select></div>
+            <div class="field"><label for="dChild">Criança (opcional)</label><select class="input" id="dChild" name="child_id"><option value="">— Documento do responsável —</option></select></div>
+            <div class="field"><label for="dTitle">Descrição (opcional)</label><input class="input" id="dTitle" name="title" maxlength="120" placeholder="Ex.: Certidão de nascimento da Ana"></div>
+            <label class="dropzone" id="dropzone">
+              <input type="file" name="file" id="dFile" accept="application/pdf,image/jpeg,image/png,image/webp">
+              <div class="ic">📎</div>
+              <b id="dropLabel">Clique ou arraste o arquivo aqui</b>
+              <small>PDF, JPG, PNG ou WEBP · até 10 MB</small>
+            </label>
+            <button class="btn btn-green" type="submit">Enviar documento</button>
+          </form>
+        </div>
+        <div class="card">
+          <div class="card-head"><h3>📁 Meus envios</h3></div>
+          <div class="list" id="docList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Meus dados -->
+    <section data-panel="dados" class="hidden">
+      <div class="main-head"><div><h1>Meus dados</h1><p>Seu e-mail e WhatsApp são usados para enviar os avisos da escola.</p></div></div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>👤 Dados de contato</h3>
+          <form class="form" id="meForm" novalidate>
+            <div class="form-alert hidden" role="alert"></div>
+            <div class="field"><label>Nome completo</label><input class="input" name="name" required></div>
+            <div class="field"><label>E-mail</label><input class="input" name="email" type="email" required></div>
+            <div class="field"><label>WhatsApp</label><input class="input" name="whatsapp" inputmode="tel" required></div>
+            <label class="check"><input type="checkbox" name="notify_email"> <span>Receber avisos por <b>e-mail</b></span></label>
+            <label class="check"><input type="checkbox" name="notify_whatsapp"> <span>Receber avisos por <b>WhatsApp</b></span></label>
+            <button class="btn btn-green" type="submit">Salvar alterações</button>
+          </form>
+        </div>
+        <div class="card">
+          <h3>🔑 Alterar senha</h3>
+          <form class="form" id="pwForm" novalidate>
+            <div class="form-alert hidden" role="alert"></div>
+            <div class="field"><label>Senha atual</label><div class="pw-wrap"><input class="input" name="current" type="password" autocomplete="current-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div></div>
+            <div class="field"><label>Nova senha</label><div class="pw-wrap"><input class="input" name="password" type="password" autocomplete="new-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div><span class="hint">Mínimo 8 caracteres, com letras e números.</span></div>
+            <div class="field"><label>Confirmar nova senha</label><div class="pw-wrap"><input class="input" name="password2" type="password" autocomplete="new-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div></div>
+            <button class="btn" type="submit">Alterar senha</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal criança -->
+<div class="modal" id="childModal" role="dialog" aria-modal="true" aria-labelledby="childModalTitle">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="childModalTitle">Criança</h3><button class="x-btn" data-close aria-label="Fechar">✕</button></div>
+    <form class="form" id="childForm" novalidate>
+      <div class="form-alert hidden" role="alert"></div>
+      <input type="hidden" name="id">
+      <div class="field"><label>Nome completo da criança</label><input class="input" name="name" required></div>
+      <div class="form-row">
+        <div class="field"><label>Data de nascimento</label><input class="input" name="birth_date" type="date"></div>
+        <div class="field"><label>Turma / série</label><input class="input" name="turma" placeholder="Ex.: Maternal II"></div>
+      </div>
+      <div class="field"><label>Observações (alergias, cuidados, autorizações)</label><textarea class="input" name="notes" maxlength="1000"></textarea></div>
+      <div class="flex"><button class="btn btn-green" type="submit">Salvar</button><button class="btn btn-ghost" type="button" data-close>Cancelar</button></div>
+    </form>
+  </div>
+</div>
+
+<script type="module" src="/js/pais.js"></script>
+</body>
+</html>

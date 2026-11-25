@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área da Equipe · Escola Arca de Noé</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#6B3FA0">
+  <link rel="icon" href="/img/logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="portal-body">
+
+<div class="center-page" id="boot"><div><div class="loader dark"></div><b>Carregando…</b></div></div>
+
+<!-- ================= LOGIN ================= -->
+<div class="auth-wrap hidden" id="authView">
+  <aside class="auth-side equipe">
+    <a class="brand" href="/"><img src="/img/logo.jpg" alt="" width="58" height="58"><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Área da Equipe</span></span></a>
+    <div>
+      <h1>Área restrita para diretores e professores 🍎</h1>
+      <p>Publique avisos no mural, confira documentos das famílias e mantenha o site sempre atualizado.</p>
+      <ul>
+        <li><span>📌</span>Mural com envio automático por e-mail e WhatsApp</li>
+        <li><span>📄</span>Conferência de documentos</li>
+        <li><span>🖼️</span>Galeria e conteúdo do site</li>
+        <li><span>👥</span>Gestão da equipe e das famílias</li>
+      </ul>
+    </div>
+    <small style="opacity:.8">Acesso monitorado · Escola Arca de Noé</small>
+    <span class="deco-big">🔒</span>
+  </aside>
+  <section class="auth-main">
+    <div class="auth-card">
+      <a class="back-home" href="/">← Voltar ao site</a>
+
+      <div id="loginBox">
+        <h2>Entrar</h2>
+        <p class="sub">Acesso exclusivo da equipe da escola.</p>
+        <form class="form" id="loginForm" novalidate>
+          <div class="form-alert hidden" role="alert"></div>
+          <div class="field"><label for="lEmail">E-mail</label><input class="input" id="lEmail" name="email" type="email" autocomplete="username" required></div>
+          <div class="field"><label for="lPass">Senha</label><div class="pw-wrap"><input class="input" id="lPass" name="password" type="password" autocomplete="current-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div></div>
+          <div class="form-foot"><button class="btn-link" type="button" data-go="forgot">Esqueci minha senha</button></div>
+          <button class="btn" type="submit">Entrar</button>
+        </form>
+      </div>
+
+      <div id="forgotBox" class="hidden">
+        <h2>Recuperar senha</h2>
+        <p class="sub">Enviaremos um link para criar uma nova senha por e-mail e WhatsApp.</p>
+        <form class="form" id="forgotForm" novalidate>
+          <div class="form-alert hidden" role="alert"></div>
+          <div class="field"><label for="fEmail">E-mail</label><input class="input" id="fEmail" name="email" type="email" required></div>
+          <button class="btn" type="submit">Enviar link</button>
+          <button class="btn-link" type="button" data-go="login">← Voltar</button>
+        </form>
+      </div>
+
+      <div id="setupBox" class="hidden">
+        <h2>Configuração inicial</h2>
+        <p class="sub">Nenhum diretor cadastrado ainda. Crie agora a conta principal da direção (este passo só aparece uma vez).</p>
+        <form class="form" id="setupForm" novalidate>
+          <div class="form-alert hidden" role="alert"></div>
+          <div class="field hidden" id="setupKeyField"><label>Chave de configuração</label><input class="input" name="setup_key" autocomplete="off"><span class="hint">Definida na variável SETUP_KEY do servidor.</span></div>
+          <div class="field"><label>Nome completo</label><input class="input" name="name" required></div>
+          <div class="form-row">
+            <div class="field"><label>E-mail</label><input class="input" name="email" type="email" required></div>
+            <div class="field"><label>WhatsApp</label><input class="input" name="whatsapp" inputmode="tel" placeholder="(44) 99999-9999" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label>Senha</label><div class="pw-wrap"><input class="input" name="password" type="password" autocomplete="new-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div></div>
+            <div class="field"><label>Confirmar senha</label><div class="pw-wrap"><input class="input" name="password2" type="password" autocomplete="new-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div></div>
+          </div>
+          <span class="hint small muted">Mínimo 8 caracteres, com letras e números.</span>
+          <button class="btn" type="submit">Criar conta da direção</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PAINEL ================= -->
+<div class="app hidden" id="appView">
+  <div class="mobile-bar">
+    <a class="brand" href="/"><img src="/img/logo.jpg" alt=""><span class="brand-name">Equipe</span></a>
+    <button class="menu-toggle" style="display:grid" id="menuBtn" aria-label="Abrir menu">☰</button>
+  </div>
+  <div class="scrim" id="scrim"></div>
+  <aside class="sidebar">
+    <a class="brand" href="/" target="_blank"><img src="/img/logo.jpg" alt=""><span><span class="brand-name">Arca de Noé</span><span class="brand-sub">Área da Equipe</span></span></a>
+    <nav class="side-nav" id="sideNav">
+      <button data-tab="inicio"><span class="ic">🏠</span>Início</button>
+      <button data-tab="mural"><span class="ic">📌</span>Mural</button>
+      <button data-tab="documentos"><span class="ic">📄</span>Documentos <span class="count hidden" id="pendCount"></span></button>
+      <button data-tab="familias"><span class="ic">👨‍👩‍👧</span>Famílias</button>
+      <button data-tab="galeria"><span class="ic">🖼️</span>Galeria</button>
+      <button data-tab="site" class="only-dir"><span class="ic">🎨</span>Conteúdo do site</button>
+      <button data-tab="equipe"><span class="ic">👥</span>Equipe</button>
+      <button data-tab="notificacoes"><span class="ic">🔔</span>Notificações</button>
+      <button data-tab="dados"><span class="ic">⚙️</span>Meus dados</button>
+    </nav>
+    <div class="side-user">
+      <b id="uName"></b><small id="uRole"></small>
+      <button class="btn btn-ghost btn-sm" style="margin-top:10px;width:100%" id="logoutBtn">Sair</button>
+    </div>
+  </aside>
+
+  <main class="main">
+    <!-- Início -->
+    <section data-panel="inicio">
+      <div class="main-head"><div><h1>Olá, <span class="first-name"></span>! 👋</h1><p>Resumo da escola hoje.</p></div>
+        <button class="btn btn-green btn-sm" data-new-post>＋ Novo aviso</button></div>
+      <div class="stats" id="stats"></div>
+      <div class="grid-2">
+        <div class="card"><h3>🗓️ Próximos eventos</h3><div class="list" id="upcoming"></div></div>
+        <div class="card"><h3>📲 Canais de notificação</h3><div id="channels"></div></div>
+      </div>
+    </section>
+
+    <!-- Mural -->
+    <section data-panel="mural" class="hidden">
+      <div class="main-head"><div><h1>Mural</h1><p>Feriados, reuniões, eventos e avisos. Ao publicar, os pais podem ser notificados por e-mail e WhatsApp.</p></div>
+        <button class="btn btn-green btn-sm" data-new-post>＋ Novo aviso</button></div>
+      <div class="table-wrap"><table class="table"><thead><tr><th>Publicação</th><th>Data</th><th>Visível para</th><th>Notificação</th><th></th></tr></thead><tbody id="postRows"></tbody></table></div>
+    </section>
+
+    <!-- Documentos -->
+    <section data-panel="documentos" class="hidden">
+      <div class="main-head"><div><h1>Documentos das famílias</h1><p>Confira, aprove ou peça o reenvio. O responsável é avisado automaticamente.</p></div></div>
+      <div class="tabs" id="docFilter">
+        <button class="active" data-f="enviado">⏳ Em análise</button>
+        <button data-f="aprovado">✅ Aprovados</button>
+        <button data-f="recusado">⚠️ Recusados</button>
+        <button data-f="">Todos</button>
+      </div>
+      <div class="table-wrap"><table class="table"><thead><tr><th>Documento</th><th>Família / criança</th><th>Enviado em</th><th>Status</th><th></th></tr></thead><tbody id="docRows"></tbody></table></div>
+    </section>
+
+    <!-- Famílias -->
+    <section data-panel="familias" class="hidden">
+      <div class="main-head"><div><h1>Famílias cadastradas</h1><p>Responsáveis, contatos e crianças.</p></div>
+        <div class="flex"><input class="input" id="famSearch" placeholder="🔎 Buscar por nome, e-mail ou criança" style="width:min(320px,100%)"><a class="btn btn-ghost btn-sm only-dir" href="/api/admin/parents.csv">⬇️ Exportar planilha</a></div></div>
+      <div class="table-wrap"><table class="table"><thead><tr><th>Responsável</th><th>Contato</th><th>Crianças</th><th>Docs</th><th></th></tr></thead><tbody id="famRows"></tbody></table></div>
+    </section>
+
+    <!-- Galeria -->
+    <section data-panel="galeria" class="hidden">
+      <div class="main-head"><div><h1>Galeria do site</h1><p>Fotos exibidas na página inicial.</p></div></div>
+      <div class="card">
+        <form class="form" id="galForm" novalidate>
+          <div class="form-alert hidden" role="alert"></div>
+          <div class="form-row">
+            <div class="field"><label>Foto</label><input class="input" type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif" required></div>
+            <div class="field"><label>Legenda</label><input class="input" name="caption" maxlength="140" placeholder="Ex.: Festa junina 2026"></div>
+          </div>
+          <div><button class="btn btn-green btn-sm" type="submit">＋ Adicionar à galeria</button></div>
+        </form>
+      </div>
+      <div class="thumbs mt" id="galList"></div>
+    </section>
+
+    <!-- Conteúdo do site -->
+    <section data-panel="site" class="hidden">
+      <div class="main-head"><div><h1>Conteúdo do site</h1><p>Textos, contatos e tour 360° da página inicial. As mudanças aparecem na hora.</p></div>
+        <a class="btn btn-ghost btn-sm" href="/" target="_blank">👀 Ver site</a></div>
+      <form class="form" id="siteForm" novalidate>
+        <div class="card">
+          <h3>🏠 Página inicial</h3>
+          <div class="form">
+            <div class="field"><label>Título principal</label><input class="input" name="hero_title"><span class="hint">Coloque palavras entre *asteriscos* para destacá-las.</span></div>
+            <div class="field"><label>Subtítulo</label><textarea class="input" name="hero_subtitle" style="min-height:70px"></textarea></div>
+            <div class="field"><label>Faixa de destaque (deixe vazio para ocultar)</label><input class="input" name="enrollment_banner"></div>
+            <div class="field"><label>Título “Quem somos”</label><input class="input" name="about_title"></div>
+            <div class="field"><label>Texto “Quem somos”</label><textarea class="input" name="about_text" style="min-height:160px"></textarea></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>🔄 Tour virtual 360°</h3>
+          <div class="form">
+            <div class="field"><label>Endereço (URL) do tour</label><input class="input" name="tour_url" placeholder="https://..."><span class="hint">O tour abre dentro do site, em tela cheia, sem abrir outra aba.</span></div>
+            <div class="field"><label>Título do tour</label><input class="input" name="tour_title"></div>
+            <div class="field"><label>Descrição do tour</label><input class="input" name="tour_subtitle"></div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>📞 Contato</h3>
+          <div class="form">
+            <div class="form-row">
+              <div class="field"><label>WhatsApp da escola</label><input class="input" name="whatsapp"></div>
+              <div class="field"><label>Telefone exibido</label><input class="input" name="phone"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>E-mail da escola</label><input class="input" name="email" type="email"></div>
+              <div class="field"><label>Instagram (@)</label><input class="input" name="instagram"></div>
+            </div>
+            <div class="field"><label>Endereço</label><input class="input" name="address"></div>
+            <div class="form-row">
+              <div class="field"><label>Busca no mapa</label><input class="input" name="map_query"><span class="hint">Texto usado para localizar a escola no Google Maps.</span></div>
+              <div class="field"><label>Horário de atendimento</label><input class="input" name="hours"></div>
+            </div>
+            <div class="form-row">
+              <div class="field"><label>Nome da escola</label><input class="input" name="school_name"></div>
+              <div class="field"><label>Subtítulo da escola</label><input class="input" name="school_subtitle"></div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <label class="check"><input type="checkbox" name="notify" id="siteNotify"> <span><b>Avisar os pais sobre esta atualização</b> (e-mail + WhatsApp e um aviso no mural)</span></label>
+          <div class="form hidden mt" id="siteNotifyFields">
+            <div class="field"><label>Título do aviso</label><input class="input" name="notify_title" value="O site da escola foi atualizado"></div>
+            <div class="field"><label>Mensagem</label><textarea class="input" name="notify_body" style="min-height:80px">Publicamos novidades no site da escola. Confira!</textarea></div>
+          </div>
+          <div class="form-alert hidden mt" role="alert"></div>
+          <div class="mt"><button class="btn btn-green" type="submit">💾 Salvar conteúdo</button></div>
+        </div>
+      </form>
+
+      <div class="card mt">
+        <div class="card-head"><h3>🎒 Segmentos de ensino</h3><button class="btn btn-green btn-sm" id="newSeg">＋ Novo segmento</button></div>
+        <div class="list" id="segList"></div>
+      </div>
+    </section>
+
+    <!-- Equipe -->
+    <section data-panel="equipe" class="hidden">
+      <div class="main-head"><div><h1>Equipe</h1><p>Diretores e professores com acesso a esta área.</p></div>
+        <button class="btn btn-green btn-sm only-dir" id="newStaff">＋ Adicionar membro</button></div>
+      <div class="table-wrap"><table class="table"><thead><tr><th>Nome</th><th>Contato</th><th>Perfil</th><th>Último acesso</th><th></th></tr></thead><tbody id="staffRows"></tbody></table></div>
+      <p class="small muted mt">Professores podem publicar no mural, conferir documentos e gerenciar a galeria. Diretores também editam o conteúdo do site, a equipe e as famílias.</p>
+    </section>
+
+    <!-- Notificações -->
+    <section data-panel="notificacoes" class="hidden">
+      <div class="main-head"><div><h1>Notificações</h1><p>Histórico de envios por e-mail e WhatsApp.</p></div>
+        <button class="btn btn-ghost btn-sm only-dir" id="testNotif">🧪 Enviar teste para mim</button></div>
+      <div id="notifChannels" class="mt"></div>
+      <div class="table-wrap mt"><table class="table"><thead><tr><th>Quando</th><th>Canal</th><th>Para</th><th>Assunto</th><th>Status</th></tr></thead><tbody id="notifRows"></tbody></table></div>
+    </section>
+
+    <!-- Meus dados -->
+    <section data-panel="dados" class="hidden">
+      <div class="main-head"><div><h1>Meus dados</h1></div></div>
+      <div class="grid-2">
+        <div class="card"><h3>👤 Contato</h3>
+          <form class="form" id="meForm" novalidate>
+            <div class="form-alert hidden" role="alert"></div>
+            <div class="field"><label>Nome</label><input class="input" name="name" required></div>
+            <div class="field"><label>E-mail</label><input class="input" name="email" type="email" required></div>
+            <div class="field"><label>WhatsApp</label><input class="input" name="whatsapp" inputmode="tel" required></div>
+            <input type="hidden" name="notify_email" value="1"><input type="hidden" name="notify_whatsapp" value="1">
+            <button class="btn" type="submit">Salvar</button>
+          </form>
+        </div>
+        <div class="card"><h3>🔑 Alterar senha</h3>
+          <form class="form" id="pwForm" novalidate>
+            <div class="form-alert hidden" role="alert"></div>
+            <div class="field"><label>Senha atual</label><div class="pw-wrap"><input class="input" name="current" type="password" autocomplete="current-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div></div>
+            <div class="field"><label>Nova senha</label><div class="pw-wrap"><input class="input" name="password" type="password" autocomplete="new-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div></div>
+            <div class="field"><label>Confirmar nova senha</label><div class="pw-wrap"><input class="input" name="password2" type="password" autocomplete="new-password" required><button class="pw-toggle" type="button" aria-label="Mostrar senha">👁️</button></div></div>
+            <button class="btn" type="submit">Alterar senha</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal: publicação -->
+<div class="modal" id="postModal" role="dialog" aria-modal="true" aria-labelledby="postModalTitle">
+  <div class="modal-box wide">
+    <div class="modal-head"><h3 id="postModalTitle">Novo aviso</h3><button class="x-btn" data-close aria-label="Fechar">✕</button></div>
+    <form class="form" id="postForm" novalidate>
+      <div class="form-alert hidden" role="alert"></div>
+      <input type="hidden" name="id">
+      <div class="form-row">
+        <div class="field"><label>Tipo</label><select class="input" name="type" id="postType"></select></div>
+        <div class="field"><label>Visível para</label><select class="input" name="visibility"><option value="publico">🌍 Todos (site público)</option><option value="pais">🔒 Somente pais cadastrados</option></select></div>
+      </div>
+      <div class="field"><label>Título</label><input class="input" name="title" maxlength="140" required placeholder="Ex.: Reunião de pais do Maternal"></div>
+      <div class="form-row">
+        <div class="field"><label>Data (opcional)</label><input class="input" type="date" name="event_date"></div>
+        <div class="field"><label>Horário (opcional)</label><input class="input" type="time" name="event_time"></div>
+      </div>
+      <div class="field"><label>Mensagem</label><textarea class="input" name="body" maxlength="5000" placeholder="Detalhes do aviso…"></textarea></div>
+      <div class="field"><label>Imagem (opcional)</label><input class="input" type="file" name="image" accept="image/jpeg,image/png,image/webp,image/gif"><label class="check hidden" id="rmImgWrap"><input type="checkbox" name="remove_image"> <span>Remover imagem atual</span></label></div>
+      <label class="check"><input type="checkbox" name="pinned"> <span>📌 Fixar no topo do mural</span></label>
+      <label class="check" style="background:var(--green-soft);padding:12px;border-radius:14px"><input type="checkbox" name="notify" checked> <span><b>Notificar os pais agora</b> por e-mail e WhatsApp</span></label>
+      <div class="flex"><button class="btn btn-green" type="submit">Publicar</button><button class="btn btn-ghost" type="button" data-close>Cancelar</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: envio manual WhatsApp -->
+<div class="modal" id="manualModal" role="dialog" aria-modal="true" aria-labelledby="manualTitle">
+  <div class="modal-box wide">
+    <div class="modal-head"><h3 id="manualTitle">Enviar pelo WhatsApp</h3><button class="x-btn" data-close aria-label="Fechar">✕</button></div>
+    <p class="muted small">Clique em cada responsável para abrir o WhatsApp com a mensagem pronta. Útil enquanto a integração automática não estiver configurada.</p>
+    <textarea class="input" id="manualMsg" style="min-height:140px"></textarea>
+    <div class="flex mt"><button class="btn btn-ghost btn-sm" id="copyMsg">📋 Copiar mensagem</button></div>
+    <div class="list mt" id="manualList"></div>
+  </div>
+</div>
+
+<!-- Modal: revisar documento -->
+<div class="modal" id="docModal" role="dialog" aria-modal="true" aria-labelledby="docModalTitle">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="docModalTitle">Conferir documento</h3><button class="x-btn" data-close aria-label="Fechar">✕</button></div>
+    <form class="form" id="docForm" novalidate>
+      <div class="form-alert hidden" role="alert"></div>
+      <input type="hidden" name="id">
+      <div id="docInfo" class="alert alert-info"></div>
+      <a class="btn btn-ghost btn-sm" id="docOpen" target="_blank" rel="noopener">👁️ Abrir arquivo</a>
+      <div class="field"><label>Observação para o responsável</label><textarea class="input" name="feedback" maxlength="600" placeholder="Obrigatória em caso de recusa. Ex.: imagem ilegível, envie novamente."></textarea></div>
+      <div class="flex"><button class="btn btn-green" type="submit" data-status="aprovado">✅ Aprovar</button><button class="btn btn-red" type="submit" data-status="recusado">⚠️ Recusar</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: segmento -->
+<div class="modal" id="segModal" role="dialog" aria-modal="true" aria-labelledby="segTitle">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="segTitle">Segmento</h3><button class="x-btn" data-close aria-label="Fechar">✕</button></div>
+    <form class="form" id="segForm" novalidate>
+      <div class="form-alert hidden" role="alert"></div>
+      <input type="hidden" name="id">
+      <div class="form-row">
+        <div class="field"><label>Nome</label><input class="input" name="title" required></div>
+        <div class="field"><label>Faixa etária</label><input class="input" name="age"></div>
+      </div>
+      <div class="field"><label>Descrição</label><textarea class="input" name="description" maxlength="600"></textarea></div>
+      <div class="form-row">
+        <div class="field"><label>Cor</label><select class="input" name="color"><option value="purple">Roxo</option><option value="green">Verde</option><option value="orange">Laranja</option><option value="blue">Azul</option><option value="red">Vermelho</option><option value="yellow">Amarelo</option></select></div>
+        <div class="field"><label>Ícone (emoji)</label><input class="input" name="icon" maxlength="8"></div>
+      </div>
+      <div class="field"><label>Ordem</label><input class="input" name="sort" type="number"></div>
+      <div class="flex"><button class="btn btn-green" type="submit">Salvar</button><button class="btn btn-ghost" type="button" data-close>Cancelar</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: membro da equipe -->
+<div class="modal" id="staffModal" role="dialog" aria-modal="true" aria-labelledby="staffTitle">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="staffTitle">Membro da equipe</h3><button class="x-btn" data-close aria-label="Fechar">✕</button></div>
+    <form class="form" id="staffForm" novalidate>
+      <div class="form-alert hidden" role="alert"></div>
+      <input type="hidden" name="id">
+      <div class="field"><label>Nome completo</label><input class="input" name="name" required></div>
+      <div class="form-row">
+        <div class="field"><label>E-mail</label><input class="input" name="email" type="email" required></div>
+        <div class="field"><label>WhatsApp</label><input class="input" name="whatsapp" inputmode="tel" required></div>
+      </div>
+      <div class="form-row">
+        <div class="field"><label>Perfil</label><select class="input" name="role"><option value="professor">Professor(a)</option><option value="diretor">Diretor(a)</option></select></div>
+        <div class="field" id="staffActiveWrap"><label>Situação</label><select class="input" name="active"><option value="1">Ativo</option><option value="0">Desativado</option></select></div>
+      </div>
+      <p class="small muted" id="staffHint">O novo membro receberá por e-mail e WhatsApp um link para criar a própria senha.</p>
+      <div class="flex"><button class="btn btn-green" type="submit">Salvar</button><button class="btn btn-ghost" type="button" data-close>Cancelar</button></div>
+    </form>
+  </div>
+</div>
+
+<script type="module" src="/js/equipe.js"></script>
+</body>
+</html>
