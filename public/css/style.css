@@ -141,7 +141,7 @@ p { margin: 0 0 1em; }
 }
 .hero-media { position: relative; }
 .hero-photo {
-  border-radius: 46% 54% 42% 58% / 52% 40% 60% 48%; overflow: hidden; aspect-ratio: 1 / 1.05;
+  border-radius: 46% 54% 42% 58% / 52% 40% 60% 48%; overflow: hidden; aspect-ratio: 5 / 4;
   border: 10px solid #fff; box-shadow: var(--shadow-lg); background: var(--blue-soft);
 }
 .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 100%; }
@@ -415,7 +415,7 @@ textarea.input { min-height: 120px; resize: vertical; line-height: 1.5; }
 .main-head p { margin: 4px 0 0; color: var(--muted); }
 .mobile-bar, .scrim { display: none; }
 @media (max-width: 900px) {
-  .app { grid-template-columns: 1fr; }
+  .app { grid-template-columns: 1fr; align-content: start; }
   .sidebar { position: fixed; inset: 0 auto 0 0; width: 280px; z-index: 80; transform: translateX(-100%); transition: transform .25s; box-shadow: var(--shadow-lg); }
   .app.menu-open .sidebar { transform: none; }
   .mobile-bar { display: flex; align-items: center; justify-content: space-between; padding: 10px 16px; background: #fff; border-bottom: 2px solid var(--line); position: sticky; top: 0; z-index: 70; }
@@ -459,7 +459,12 @@ table.table { width: 100%; border-collapse: collapse; font-size: .94rem; min-wid
 .list-item .grow b { display: block; overflow: hidden; text-overflow: ellipsis; }
 .list-item .grow small { color: var(--muted); display: block; }
 .list-item .feedback { margin-top: 6px; font-size: .88rem; background: var(--red-soft); color: #A3222D; padding: 6px 10px; border-radius: 10px; }
-@media (max-width: 600px) { .list-item { flex-wrap: wrap; } }
+@media (max-width: 600px) {
+  .list-item { flex-wrap: wrap; }
+  .list-item .grow { flex-basis: calc(100% - 64px); }
+  .list-item > .status { margin-left: 60px; }
+  .list-item > .row-actions { margin-left: auto; }
+}
 
 .dropzone {
   border: 3px dashed var(--line); border-radius: 20px; padding: 26px; text-align: center; background: var(--bg); cursor: pointer; transition: border-color .15s, background .15s;

@@ -432,6 +432,14 @@ function demoCsv() {
   a.click();
 }
 
+// Link direto para a demonstração já logada: ?entrar=pais | equipe | professora
+const entrar = new URLSearchParams(location.search).get('entrar');
+if (IS_DEMO && entrar) {
+  load();
+  const id = { pais: 3, familia: 3, equipe: 1, diretora: 1, professora: 2 }[entrar];
+  if (id && db.users.some((x) => x.id === id)) localStorage.setItem(SKEY, String(id));
+}
+
 if (IS_DEMO) {
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a[href]'); if (!a) return;
@@ -454,7 +462,7 @@ if (IS_DEMO) {
     bar.className = 'demo-bar';
     bar.innerHTML = '<span>🧪 Versão de demonstração: os dados ficam só neste navegador.</span><button type="button">Restaurar</button>';
     bar.querySelector('button').addEventListener('click', () => { if (confirm('Apagar as alterações feitas e restaurar a demonstração original?')) { resetDemo(); location.reload(); } });
-    document.body.append(bar);
+    if (!new URLSearchParams(location.search).has('apresentacao')) document.body.append(bar);
 
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
